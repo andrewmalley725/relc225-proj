@@ -1,0 +1,8 @@
+#alpha a {
+    color: black;
+    text-decoration: none;
+}
+
+#alpha a:hover{
+    color: blue;
+}
