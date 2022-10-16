@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import '../css/styles.css';
 
+let numGuesses = 5;
+const WORDS = ['Hello', 'Goodbye', 'Beans'];
+
+function randomWord(words){
+    let randIndex = Math.floor(Math.random() * words.length);
+    return words[randIndex];
+}
+
 function Game(props){
-    const [wordy, setWord] = useState(props.word.toUpperCase().split(''));
+    const [wordy, setWord] = useState(randomWord(WORDS).toUpperCase().split(''));
     const [blanks, setBlanks] = useState(makeBlanks(wordy).split(''));
     const [alpha, setAlpha] = useState('abcdefghijklmnopqrstuvwxyz'.split(''));
     const [guess, setGuess] = useState('');
@@ -10,6 +18,7 @@ function Game(props){
     console.log(guess);
     console.log(wordy);
     console.log(blanks);
+    console.log(alpha);
 
     function makeBlanks(word){
         let oString = '';
@@ -19,12 +28,25 @@ function Game(props){
         return oString;
     }
 
+    function revealWord(){
+        for (let i = 0; i < blanks.length; i++){
+            blanks[i] = wordy[i];
+        }
+    }
+
     function handleClick(e, guess){
         e.preventDefault();
         setGuess(guess);
         if (wordy.includes(guess)){
-            blanks[wordy.indexOf(guess)] = guess;
-            wordy[wordy.indexOf(guess)] = '_'
+            for (let i = 0; i < blanks.length; i ++){
+                if (wordy[i] == guess){
+                    blanks[i] = guess;
+                }
+            }
+            wordy[wordy.indexOf(guess)] = '_';
+        }
+        else{
+            numGuesses -= 1;
         }
 
         alpha[alpha.indexOf(guess.toLowerCase())] = '_';
@@ -53,17 +75,24 @@ function Game(props){
                         return(
                             <>
                             {
+                                numGuesses > 0 ?
                                 alpha.indexOf(letter) == alpha.length - 1 ?
                                 <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
-                                alpha.indexOf(letter) == 6 || alpha.indexOf(letter) == 15 ?
+                                index == 6 || index == 15 ?
                                 <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
-                                <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a>
+                                <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> :
+                                <p></p>
                             }
                             </>
                         );
                     })
                 }
             </div>
+            {
+                numGuesses > 0 ? <p>Guesses left: {numGuesses}</p> :
+                <h1>Out of guesses!</h1>
+            }
+            <button onClick={() => {window.location.reload()}}>Reset</button>
         </div>
     )
 }
