@@ -60,8 +60,8 @@ function Game(props){
     }
     
     return(
-        <div style={{textAlign: 'center'}}>
-            <h1>
+        <div id='main'>
+            <h1 id='word'>
                 {
                     blanks.map(i => {
                         return(
@@ -95,8 +95,8 @@ function Game(props){
                 }
             </div>
             {
-                solved(wordy) ? <h1>Solved!</h1> : numGuesses > 0 ? <p> Guesses remaining: {numGuesses}</p> :
-                <h1>Out of guesses!</h1>
+                solved(wordy) ? <h1 style={{color: 'green'}}>Solved!</h1> : numGuesses > 0 ? <p> Guesses remaining: {numGuesses}</p> :
+                <h1 style={{color: 'red'}}>Out of guesses!</h1>
             }
             <button onClick={() => {window.location.reload()}}>Reset</button>
         </div>
