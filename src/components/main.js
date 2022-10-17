@@ -19,6 +19,7 @@ function Game(props){
     console.log(wordy);
     console.log(blanks);
     console.log(alpha);
+    console.log(solved(wordy));
 
     function makeBlanks(word){
         let oString = '';
@@ -28,10 +29,14 @@ function Game(props){
         return oString;
     }
 
-    function revealWord(){
-        for (let i = 0; i < blanks.length; i++){
-            blanks[i] = wordy[i];
+    function solved(lst){
+        let vool = true;
+        for (let i of lst) {
+            if (i != '_'){
+                vool = false;
+            }
         }
+        return vool;
     }
 
     function handleClick(e, guess){
@@ -75,7 +80,7 @@ function Game(props){
                         return(
                             <>
                             {
-                                numGuesses > 0 ?
+                                solved(wordy) ? <></> : numGuesses > 0 ?
                                 alpha.indexOf(letter) == alpha.length - 1 ?
                                 <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
                                 index == 6 || index == 15 ?
@@ -89,7 +94,7 @@ function Game(props){
                 }
             </div>
             {
-                numGuesses > 0 ? <p>Guesses left: {numGuesses}</p> :
+                solved(wordy) ? <h1>Solved!</h1> : numGuesses > 0 ? <p> Guesses remaining: {numGuesses}</p> :
                 <h1>Out of guesses!</h1>
             }
             <button onClick={() => {window.location.reload()}}>Reset</button>
