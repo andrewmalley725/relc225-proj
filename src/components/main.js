@@ -46,9 +46,10 @@ function Game(props){
             for (let i = 0; i < blanks.length; i ++){
                 if (wordy[i] == guess){
                     blanks[i] = guess;
+                    wordy[i] = '_';
                 }
             }
-            wordy[wordy.indexOf(guess)] = '_';
+            
         }
         else{
             numGuesses -= 1;
@@ -81,9 +82,9 @@ function Game(props){
                             <>
                             {
                                 solved(wordy) ? <></> : numGuesses > 0 ?
-                                alpha.indexOf(letter) == alpha.length - 1 ?
+                                index == alpha.length - 1 ?
                                 <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
-                                index == 6 || index == 15 ?
+                                index == 6 || index == 15 ? 
                                 <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
                                 <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> :
                                 <p></p>
