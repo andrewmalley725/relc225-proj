@@ -26,14 +26,26 @@ function Game(props){
     function makeBlanks(word){
         let oString = '';
         for (let i = 0; i < word.length; i++){
+            if (word[i] == ' ') {
+                oString += ' ';
+            }
+            else{
                 oString += '_';
+            }
+            
         }
         return oString;
     }
 
     function solved(lst){
         let vool = true;
+        let lst2 = []
         for (let i of lst) {
+            if (i != ' '){
+                lst2.push(i);
+            }
+        }
+        for (let i of lst2){
             if (i != '_'){
                 vool = false;
             }
@@ -76,7 +88,7 @@ function Game(props){
                             <>
                             {
                                 index == blanks.length - 1 ?
-                                <>{i}</> : <>{i + ' '}</>
+                                <>{i}</> : i == ' ' ? <>&ensp;</> : <>{i + ' '}</>
                             }
                             </>
                         )
@@ -85,8 +97,8 @@ function Game(props){
             </h1>
             <div id='alpha'>
                     {
-                        solved(wordy) ? <h1 style={{color: 'green', fontSize: '30px'}}>Solved!</h1> : numGuesses == 0 ? 
-                        <h1 style={{color: 'red', fontSize: '30px'}}>Out of guesses!</h1> :
+                        solved(wordy) ? <p style={{color: 'green', fontSize: '30px'}}>Solved!</p> : numGuesses == 0 ? 
+                        <p style={{color: 'red', fontSize: '30px'}}>Out of guesses!</p> :
                         alpha.map((letter, index) => {
                             return(
                                 <>
@@ -106,10 +118,11 @@ function Game(props){
             {
                 solved(wordy) ? <div>
                                         <p>Fun fact: {word['info']}</p>
-                                        <p>Click <a href={word['site']}>here</a> for more info</p>
+                                        <p>Click <a id='info' href={word['site']}>here</a> for more info</p>
                                 </div> :
                 <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
             }
+            <br></br>
             <button onClick={() => {window.location.reload()}}>Reset</button>
         </div>
     )

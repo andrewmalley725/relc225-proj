@@ -19,3 +19,12 @@
     text-align: center;
     margin-top: 15%;
 }
+
+#info{
+    text-decoration: none;
+    color: blue;
+}
+
+#info:hover{
+    text-decoration: underline;
+}
