@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import '../css/styles.css';
+import wordsJSON from '../js/words'
 
 let numGuesses = 5;
-const WORDS = ['Hello', 'Goodbye', 'Beans'];
 
 function randomWord(words){
     let randIndex = Math.floor(Math.random() * words.length);
     return words[randIndex];
 }
 
-let word = randomWord(WORDS);
+let word = randomWord(wordsJSON);
 
 function Game(props){
-    const [wordy, setWord] = useState(word.toUpperCase().split(''));
+    const [wordy, setWord] = useState(word['word'].toUpperCase().split(''));
     const [blanks, setBlanks] = useState(makeBlanks(wordy).split(''));
     const [alpha, setAlpha] = useState('abcdefghijklmnopqrstuvwxyz'.split(''));
     const [guess, setGuess] = useState('');
@@ -59,7 +59,7 @@ function Game(props){
 
         if (numGuesses == 0){
             for (let i = 0; i < blanks.length; i ++){
-                blanks[i] = word[i].toUpperCase();
+                blanks[i] = word['word'][i].toUpperCase();
             }
         }
 
@@ -104,7 +104,12 @@ function Game(props){
                 }
             </div>
             {
-                solved(wordy) ? <h1 style={{color: 'green'}}>Solved!</h1> : numGuesses > 0 ? <p> Guesses remaining: {numGuesses}</p> :
+                solved(wordy) ? <div>
+                                        <h1 style={{color: 'green'}}>Solved!</h1>
+                                        <p>Fun fact: {word['info']}</p>
+                                        <p>Click <a href={word['site']}>here</a> for more info</p>
+                                </div> :
+                numGuesses > 0 ? <p> Guesses remaining: {numGuesses}</p> :
                 <h1 style={{color: 'red'}}>Out of guesses!</h1>
             }
             <button onClick={() => {window.location.reload()}}>Reset</button>
