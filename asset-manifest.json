@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/relc225-proj/static/css/main.4b5efdee.css",
-    "main.js": "/relc225-proj/static/js/main.a90430cb.js",
+    "main.js": "/relc225-proj/static/js/main.b70ae3e8.js",
     "index.html": "/relc225-proj/index.html",
     "main.4b5efdee.css.map": "/relc225-proj/static/css/main.4b5efdee.css.map",
-    "main.a90430cb.js.map": "/relc225-proj/static/js/main.a90430cb.js.map"
+    "main.b70ae3e8.js.map": "/relc225-proj/static/js/main.b70ae3e8.js.map"
   },
   "entrypoints": [
     "static/css/main.4b5efdee.css",
-    "static/js/main.a90430cb.js"
+    "static/js/main.b70ae3e8.js"
   ]
 }
