@@ -17,7 +17,6 @@ function Game(props){
     const [alpha, setAlpha] = useState('abcdefghijklmnopqrstuvwxyz'.split(''));
     const [guess, setGuess] = useState('');
 
-    
     console.log(guess);
     console.log(wordy);
     console.log(blanks);
