@@ -9,12 +9,15 @@ function randomWord(words){
     return words[randIndex];
 }
 
+let word = randomWord(WORDS);
+
 function Game(props){
-    const [wordy, setWord] = useState(randomWord(WORDS).toUpperCase().split(''));
+    const [wordy, setWord] = useState(word.toUpperCase().split(''));
     const [blanks, setBlanks] = useState(makeBlanks(wordy).split(''));
     const [alpha, setAlpha] = useState('abcdefghijklmnopqrstuvwxyz'.split(''));
     const [guess, setGuess] = useState('');
 
+    
     console.log(guess);
     console.log(wordy);
     console.log(blanks);
@@ -55,6 +58,12 @@ function Game(props){
             numGuesses -= 1;
         }
 
+        if (numGuesses == 0){
+            for (let i = 0; i < blanks.length; i ++){
+                blanks[i] = word[i].toUpperCase();
+            }
+        }
+
         alpha[alpha.indexOf(guess.toLowerCase())] = '_';
         
     }
@@ -63,11 +72,11 @@ function Game(props){
         <div id='main'>
             <h1 id='word'>
                 {
-                    blanks.map(i => {
+                    blanks.map((i, index) => {
                         return(
                             <>
                             {
-                                blanks.indexOf(i) == blanks.length - 1 ?
+                                index == blanks.length - 1 ?
                                 <>{i}</> : <>{i + ' '}</>
                             }
                             </>
@@ -82,10 +91,11 @@ function Game(props){
                             <>
                             {
                                 solved(wordy) ? <></> : numGuesses > 0 ?
-                                index == alpha.length - 1 ?
+                                index == alpha.length - 1 ? letter == '_' ? <>{letter}</> :
                                 <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
-                                index == 6 || index == 15 ? 
+                                index == 6 || index == 15 ? letter == '_' ? <><>{letter + ' '}</><br/></> :
                                 <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
+                                letter == '_' ? <>{letter + ' '}</> :
                                 <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> :
                                 <p></p>
                             }
