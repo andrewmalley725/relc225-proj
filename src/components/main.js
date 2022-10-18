@@ -84,33 +84,31 @@ function Game(props){
                 }
             </h1>
             <div id='alpha'>
-                {
-                    alpha.map((letter, index) => {
-                        return(
-                            <>
-                            {
-                                solved(wordy) ? <></> : numGuesses > 0 ?
-                                index == alpha.length - 1 ? letter == '_' ? <>{letter}</> :
-                                <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
-                                index == 6 || index == 15 ? letter == '_' ? <><>{letter + ' '}</><br/></> :
-                                <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
-                                letter == '_' ? <>{letter + ' '}</> :
-                                <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> :
-                                <p></p>
-                            }
-                            </>
-                        );
-                    })
-                }
+                    {
+                        solved(wordy) ? <h1 style={{color: 'green', fontSize: '30px'}}>Solved!</h1> : numGuesses == 0 ? 
+                        <h1 style={{color: 'red', fontSize: '30px'}}>Out of guesses!</h1> :
+                        alpha.map((letter, index) => {
+                            return(
+                                <>
+                                {
+                                    index == alpha.length - 1 ? letter == '_' ? <>{letter}</> :
+                                    <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
+                                    index == 6 || index == 15 ? letter == '_' ? <><>{letter + ' '}</><br/></> :
+                                    <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
+                                    letter == '_' ? <>{letter + ' '}</> :
+                                    <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> 
+                                }
+                                </>
+                            );
+                        })
+                    }
             </div>
             {
                 solved(wordy) ? <div>
-                                        <h1 style={{color: 'green'}}>Solved!</h1>
                                         <p>Fun fact: {word['info']}</p>
                                         <p>Click <a href={word['site']}>here</a> for more info</p>
                                 </div> :
-                numGuesses > 0 ? <p> Guesses remaining: {numGuesses}</p> :
-                <h1 style={{color: 'red'}}>Out of guesses!</h1>
+                <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
             }
             <button onClick={() => {window.location.reload()}}>Reset</button>
         </div>
