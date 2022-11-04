@@ -118,7 +118,7 @@ function Game(props){
             {
                 solved(wordy) ? <div>
                                         <p>Fun fact: {word['info']}</p>
-                                        <p>Click <a id='info' href={word['site']}>here</a> for more info</p>
+                                        <p>Click <a id='info' target='blank' href={word['site']}>here</a> for more info</p>
                                 </div> :
                 <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
             }
