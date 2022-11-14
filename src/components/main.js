@@ -116,7 +116,7 @@ function Game(props){
                     }
             </div>
             {
-                solved(wordy) ? <div>
+                solved(wordy) || numGuesses == 0 ? <div>
                                         <p>Fun fact: {word['info']}</p>
                                         <p>Click <a id='info' target='blank' href={word['site']}>here</a> for more info</p>
                                 </div> :
