@@ -33,8 +33,6 @@
 #game{
     text-align: center;
     margin-top: 7%;
-    margin-left: 20%;
-    margin-right: 20%;
     background-color: rgba(252, 252, 252, 0.766);
     font-family:'Courier New', Courier, monospace
 }
