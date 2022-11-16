@@ -8,21 +8,23 @@
 }
 
 #title{
-    font-size: 50px;
+    font-size: 30px;
 }
 
 #alpha{
-    font-size: 40px;
+    font-size: 20px;
 }
 
 #word{
-    font-size: 50px;
+    font-size: 30px;
 }
 
 #main{
     height: 100%;
     width: 100%;
     background-image: url('../images/kirtland-temple-8949.jpeg');
+    top: 0;
+    left: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,5 +49,5 @@
 }
 
 #footer{
-    font-size: 30px;
+    font-size: 20px;
 }
