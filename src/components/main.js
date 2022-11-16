@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../css/styles.css';
 import wordsJSON from '../js/words'
 
-let numGuesses = 5;
+let numGuesses = 8;
 
 function randomWord(words){
     let randIndex = Math.floor(Math.random() * words.length);
@@ -11,19 +11,11 @@ function randomWord(words){
 
 let word = randomWord(wordsJSON);
 
-
-
 function Game(props){
     const [wordy, setWord] = useState(word['word'].toUpperCase().split(''));
     const [blanks, setBlanks] = useState(makeBlanks(wordy).split(''));
     const [alpha, setAlpha] = useState('abcdefghijklmnopqrstuvwxyz'.split(''));
     const [guess, setGuess] = useState('');
-
-    console.log(guess);
-    console.log(wordy);
-    console.log(blanks);
-    console.log(alpha);
-    console.log(solved(wordy));
 
     function makeBlanks(word){
         let oString = '';
