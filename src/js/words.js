@@ -1,18 +1,78 @@
 const wordsJSON = [
     {
-        word: 'Corn',
-        info: "It's corn!",
-        site: 'https://www.youtube.com/watch?v=_caMQpiwiaU'
+        word: 'Degrees of Glory',
+        info: " ",
+        site: ' '
     },
     {
-        word: 'Beans',
-        info: 'They taste great!',
-        site: 'https://www.youtube.com/watch?v=TOUrLn1FFCA'
+        word: 'Celestial',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Terrestrial',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Telestial',
+        info: " ",
+        site: ' '
     },
     {
         word: 'Word of Wisdom',
         info: 'Revalation given to Joseph Smith',
         site: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/89?lang=eng'
+    },
+    {
+        word: 'Grace',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Endowment',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Temple',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Priesthood',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Priesthood keys',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Priesthood power',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Priesthood authority',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'School of Prophets',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Plan of Salvation',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'Degrees of Glory',
+        info: " ",
+        site: ' '
     },
 ];
 

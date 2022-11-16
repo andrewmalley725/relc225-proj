@@ -11,6 +11,8 @@ function randomWord(words){
 
 let word = randomWord(wordsJSON);
 
+
+
 function Game(props){
     const [wordy, setWord] = useState(word['word'].toUpperCase().split(''));
     const [blanks, setBlanks] = useState(makeBlanks(wordy).split(''));
@@ -90,7 +92,7 @@ function Game(props){
                                 <>
                                 {
                                     index == blanks.length - 1 ?
-                                    <>{i}</> : i == ' ' ? <>&ensp;</> : <>{i + ' '}</>
+                                    <>{i}</> : i == ' ' ? <br/> : <>{i + ' '}</>
                                 }
                                 </>
                             )
