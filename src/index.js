@@ -4,7 +4,9 @@ import Game from './components/main';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Game />
+    <div>
+        <Game />
+    </div>
 );
 
 

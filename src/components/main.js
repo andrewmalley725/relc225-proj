@@ -81,49 +81,55 @@ function Game(props){
     
     return(
         <div id='main'>
-            <h1 id='word'>
-                {
-                    blanks.map((i, index) => {
-                        return(
-                            <>
-                            {
-                                index == blanks.length - 1 ?
-                                <>{i}</> : i == ' ' ? <>&ensp;</> : <>{i + ' '}</>
-                            }
-                            </>
-                        )
-                    })
-                }
-            </h1>
-            <div id='alpha'>
+            <h1 id="title">Kirtland Revelations</h1>
+            <div id='game'>
+                <h1 id='word'>
                     {
-                        solved(wordy) ? <p style={{color: 'green', fontSize: '30px'}}>Solved!</p> : numGuesses == 0 ? 
-                        <p style={{color: 'red', fontSize: '30px'}}>Out of guesses!</p> :
-                        alpha.map((letter, index) => {
+                        blanks.map((i, index) => {
                             return(
                                 <>
                                 {
-                                    index == alpha.length - 1 ? letter == '_' ? <>{letter}</> :
-                                    <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
-                                    index == 6 || index == 15 ? letter == '_' ? <><>{letter + ' '}</><br/></> :
-                                    <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
-                                    letter == '_' ? <>{letter + ' '}</> :
-                                    <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> 
+                                    index == blanks.length - 1 ?
+                                    <>{i}</> : i == ' ' ? <>&ensp;</> : <>{i + ' '}</>
                                 }
                                 </>
-                            );
+                            )
                         })
                     }
+                </h1>
+                <div id='alpha'>
+                        {
+                            solved(wordy) ? <p style={{color: 'green', fontSize: '30px'}}>Solved!</p> : numGuesses == 0 ? 
+                            <p style={{color: 'red', fontSize: '30px'}}>Out of guesses!</p> :
+                            alpha.map((letter, index) => {
+                                return(
+                                    <>
+                                    {
+                                        index == alpha.length - 1 ? letter == '_' ? <>{letter}</> :
+                                        <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase()}</a> :
+                                        index == 6 || index == 15 ? letter == '_' ? <><>{letter + ' '}</><br/></> :
+                                        <><a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a><br/></> :
+                                        letter == '_' ? <>{letter + ' '}</> :
+                                        <a href='#' onClick={e => handleClick(e, letter.toUpperCase())}>{letter.toUpperCase() + ' '}</a> 
+                                    }
+                                    </>
+                                );
+                            })
+                        }
+                        
+                </div>
+                        <div id="footer">
+                            {
+                                solved(wordy) || numGuesses == 0 ? <div>
+                                                        <p>Fun fact: {word['info']}</p>
+                                                        <p>Click <a id='info' target='blank' href={word['site']}>here</a> for more info</p>
+                                                </div> :
+                                <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
+                            }
+                        </div>
+                <br></br>
+                <button onClick={() => {window.location.reload()}}>Reset</button>
             </div>
-            {
-                solved(wordy) || numGuesses == 0 ? <div>
-                                        <p>Fun fact: {word['info']}</p>
-                                        <p>Click <a id='info' target='blank' href={word['site']}>here</a> for more info</p>
-                                </div> :
-                <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
-            }
-            <br></br>
-            <button onClick={() => {window.location.reload()}}>Reset</button>
         </div>
     )
 }
