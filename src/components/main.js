@@ -72,6 +72,8 @@ function Game(props){
         alpha[alpha.indexOf(guess.toLowerCase())] = '_';
         
     }
+
+    console.log(word);
     
     return(
         <div id='main'>
@@ -115,8 +117,12 @@ function Game(props){
                         <div id="footer">
                             {
                                 solved(wordy) || numGuesses == 0 ? <div>
-                                                        <p>Fun fact: {word['info']}</p>
-                                                        <p>Click <a id='info' target='blank' href={word['site']}>here</a> for more info</p>
+                                                        <p><b>
+                                                            {word['info'].map(i => {
+                                                                return(<p>{i}</p>)
+                                                            })}
+                                                        </b></p>
+                                                        <p>Click <a id='info' target='blank' href={word['site']}>here</a> to learn more</p>
                                                 </div> :
                                 <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
                             }

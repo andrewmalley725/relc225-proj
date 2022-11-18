@@ -21,7 +21,7 @@ const wordsJSON = [
     },
     {
         word: 'Word of Wisdom',
-        info: 'Revalation given to Joseph Smith',
+        info: ['Revelation given to Joseph Smith in 1833.','This revelation from God is for the "temporal salvation of the saints".'],
         site: 'https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/89?lang=eng'
     },
     {
@@ -41,6 +41,11 @@ const wordsJSON = [
     },
     {
         word: 'Priesthood',
+        info: " ",
+        site: ' '
+    },
+    {
+        word: 'House of the Lord',
         info: " ",
         site: ' '
     },
