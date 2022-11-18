@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/relc225-proj/static/css/main.66926685.css",
-    "main.js": "/relc225-proj/static/js/main.505a964f.js",
+    "main.js": "/relc225-proj/static/js/main.f95f4bea.js",
     "static/media/kirtland-temple-8949.jpeg": "/relc225-proj/static/media/kirtland-temple-8949.56719efb102268838b74.jpeg",
     "index.html": "/relc225-proj/index.html",
     "main.66926685.css.map": "/relc225-proj/static/css/main.66926685.css.map",
-    "main.505a964f.js.map": "/relc225-proj/static/js/main.505a964f.js.map"
+    "main.f95f4bea.js.map": "/relc225-proj/static/js/main.f95f4bea.js.map"
   },
   "entrypoints": [
     "static/css/main.66926685.css",
-    "static/js/main.505a964f.js"
+    "static/js/main.f95f4bea.js"
   ]
 }
