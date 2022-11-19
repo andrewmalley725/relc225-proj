@@ -78,6 +78,7 @@ function Game(props){
     return(
         <div id='main'>
             <h1 id="title">Kirtland Revelations</h1>
+            <button onClick={() => {window.location.reload()}}>New Word</button>
             <div id='game'>
                 <h1 id='word'>
                     {
@@ -117,18 +118,17 @@ function Game(props){
                         <div id="footer">
                             {
                                 solved(wordy) || numGuesses == 0 ? <div>
-                                                        <p><b>
-                                                            {word['info'].map(i => {
+                                                        <b>
+                                                            {word['info'] ? word['info'].map(i => {
                                                                 return(<p>{i}</p>)
-                                                            })}
-                                                        </b></p>
+                                                            }) : <h1>Something went wrong. Please reload the page.</h1>}
+                                                        </b>
                                                         <p>Click <a id='info' target='blank' href={word['site']}>here</a> to learn more</p>
-                                                </div> :
-                                <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
+                                                </div> : <p style={{display: numGuesses > 0 ? 'block' : 'none'}}> Guesses remaining: {numGuesses}</p>
                             }
                         </div>
                 <br></br>
-                <button onClick={() => {window.location.reload()}}>Reset</button>
+                
             </div>
         </div>
     )
