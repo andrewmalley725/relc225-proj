@@ -10,7 +10,7 @@ function randomWord(words){
 }
 
 let word = randomWord(wordsJSON);
-
+//test
 function Game(props){
     const [wordy, setWord] = useState(word['word'].toUpperCase().split(''));
     const [blanks, setBlanks] = useState(makeBlanks(wordy).split(''));
